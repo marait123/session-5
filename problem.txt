@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "/mnt/e/udacity/sessions/session 5/heroku smaple/env/bin/flask", line 10, in <module>
+    sys.exit(main())
+  File "/mnt/e/udacity/sessions/session 5/heroku smaple/env/lib/python3.8/site-packages/flask/cli.py", line 967, in main
+    cli.main(args=sys.argv[1:], prog_name="python -m flask" if as_module else None)
+  File "/mnt/e/udacity/sessions/session 5/heroku smaple/env/lib/python3.8/site-packages/flask/cli.py", line 586, in main
+    return super(FlaskGroup, self).main(*args, **kwargs)
+  File "/mnt/e/udacity/sessions/session 5/heroku smaple/env/lib/python3.8/site-packages/click/core.py", line 1062, in main
+    rv = self.invoke(ctx)
+  File "/mnt/e/udacity/sessions/session 5/heroku smaple/env/lib/python3.8/site-packages/click/core.py", line 1668, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/mnt/e/udacity/sessions/session 5/heroku smaple/env/lib/python3.8/site-packages/click/core.py", line 1668, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/mnt/e/udacity/sessions/session 5/heroku smaple/env/lib/python3.8/site-packages/click/core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/mnt/e/udacity/sessions/session 5/heroku smaple/env/lib/python3.8/site-packages/click/core.py", line 763, in invoke
+    return __callback(*args, **kwargs)
+  File "/mnt/e/udacity/sessions/session 5/heroku smaple/env/lib/python3.8/site-packages/click/decorators.py", line 26, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "/mnt/e/udacity/sessions/session 5/heroku smaple/env/lib/python3.8/site-packages/flask/cli.py", line 426, in decorator
+    return __ctx.invoke(f, *args, **kwargs)
+  File "/mnt/e/udacity/sessions/session 5/heroku smaple/env/lib/python3.8/site-packages/click/core.py", line 763, in invoke
+    return __callback(*args, **kwargs)
+  File "/mnt/e/udacity/sessions/session 5/heroku smaple/env/lib/python3.8/site-packages/flask_migrate/cli.py", line 32, in init
+    _init(directory, multidb)
+  File "/mnt/e/udacity/sessions/session 5/heroku smaple/env/lib/python3.8/site-packages/flask_migrate/__init__.py", line 96, in wrapped
+    f(*args, **kwargs)
+  File "/mnt/e/udacity/sessions/session 5/heroku smaple/env/lib/python3.8/site-packages/flask_migrate/__init__.py", line 126, in init
+    directory = current_app.extensions['migrate'].directory
+KeyError: 'migrate'
