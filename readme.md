@@ -38,6 +38,11 @@ sudo apt-get -y install postgresql
 - if you can't connect to psql on WSL2
   `sudo /etc/init.d/postgresql start`
 
+# Access the local postgres database
+
+- run `sudo su postgres`
+- run `psql`
+
 # Notes
 
 - to view a file in terminal while showing end of line characters `cat -v setup.sh`
