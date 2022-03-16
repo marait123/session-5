@@ -53,6 +53,8 @@ sudo apt-get -y install postgresql
 # Notes
 
 - to view a file in terminal while showing end of line characters `cat -v setup.sh`
+- if heroku fails for some reason try to get the log to know what is the issue
+  `heroku log --tail`
 
 # documentation
 
