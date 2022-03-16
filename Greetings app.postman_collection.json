@@ -1,0 +1,641 @@
+{
+	"info": {
+		"_postman_id": "625f0e9b-ae7e-4abd-90bb-0393e15ad844",
+		"name": "Greetings app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "greetings",
+			"item": [
+				{
+					"name": "get all greetings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "page",
+								"value": "2",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/greetings?page=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"greetings"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create greating",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"lang\": \"french\",\n\t\"greeting\": \"bonjour\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/greetings",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"greetings"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create greeting",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"lang\": \"Hindi\",\n\t\"greeting\": \"namastai\"\n}"
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/greetings",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"greetings"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.2 Python/3.7.9"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Jan 2022 17:29:23 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"greeting\": {\n        \"greeting\": \"namastai\",\n        \"lang\": \"Hindi\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get greeting in a language",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"      const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.greeting.greeting).to.eql(\"nehaw\");\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/greetings/french",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"greetings",
+								"french"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get greeting in a language successeded",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:5000/greetings/ar",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"greetings",
+										"ar"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.2 Python/3.7.9"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Jan 2022 14:05:25 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"greeting\": \"مرحبا\"\n}"
+						},
+						{
+							"name": "no greeting wit that language exist",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:5000/greetings/arj",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"greetings",
+										"arj"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.2 Python/3.7.9"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Jan 2022 15:19:10 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"no greeting in this language\"\n}"
+						}
+					]
+				}
+			],
+			"description": "this is the api for greetings example flask api",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://herfy.us.auth0.com/authorize?audience=GreetingApi&response_type=token&client_id=zPFO37Ts8AwLBhVt9qZPtuqyvfYj49T7&redirect_uri=http://127.0.0.1:8100/tabs/user-page",
+							"protocol": "https",
+							"host": [
+								"herfy",
+								"us",
+								"auth0",
+								"com"
+							],
+							"path": [
+								"authorize"
+							],
+							"query": [
+								{
+									"key": "audience",
+									"value": "GreetingApi"
+								},
+								{
+									"key": "response_type",
+									"value": "token"
+								},
+								{
+									"key": "client_id",
+									"value": "zPFO37Ts8AwLBhVt9qZPtuqyvfYj49T7"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://127.0.0.1:8100/tabs/user-page"
+								},
+								{
+									"key": null,
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get profile info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"get an image\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://herfy.us.auth0.com/userinfo?access_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlN6RTdwU0ZUSEJMTENIa2twQldYcCJ9.eyJpc3MiOiJodHRwczovL2hlcmZ5LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDEwMjc2MzkxOTEzNTI3MDc1ODQ5NCIsImF1ZCI6IkNhZmVBcGkiLCJpYXQiOjE2NDQxNDA0ODksImV4cCI6MTY0NDE0NzY4OSwiYXpwIjoiN05UZEl2T1FhYWNsTkxySUpxcmdYczh4VUFsZmY1bnUiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpkcmlua3MiLCJnZXQ6ZHJpbmtzIiwiZ2V0OmRyaW5rcy1kZXRhaWwiLCJwYXRjaDpkcmlua3MiLCJwb3N0OmRyaW5rcyJdfQ.a9LCuRcj3Gz0Vns6Wi17nbMAYwMrNKcNOnjTJwE5ePAZV2QXxM4ufqxatNXvUzjqq7auKlpbpAc89r6NmueRBk-mozI0hm_WoQSCmJsCrV2IDi5fJEfZ7W66PZx-1Wn28Dbe8yXpv_vxeTsGgtNVz_TCeKEkEMDqIaJeMkHODQCil79HEnLxhl2ZmoMzBqq2NxO3ADAbZJB4QgL657xXAX9TmywEIULP3W5dufxXlk1cNktUERfBy-wf5Qj9LhGupuVsQxJ4qBLvkN72vCJYidzubez_caiQWbwjOS2ti4OfGajHnske3OYcMwUCApHp_sr8_cdy96d8zGj-k9kNkg",
+							"protocol": "https",
+							"host": [
+								"herfy",
+								"us",
+								"auth0",
+								"com"
+							],
+							"path": [
+								"userinfo"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlN6RTdwU0ZUSEJMTENIa2twQldYcCJ9.eyJpc3MiOiJodHRwczovL2hlcmZ5LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDEwMjc2MzkxOTEzNTI3MDc1ODQ5NCIsImF1ZCI6IkNhZmVBcGkiLCJpYXQiOjE2NDQxNDA0ODksImV4cCI6MTY0NDE0NzY4OSwiYXpwIjoiN05UZEl2T1FhYWNsTkxySUpxcmdYczh4VUFsZmY1bnUiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpkcmlua3MiLCJnZXQ6ZHJpbmtzIiwiZ2V0OmRyaW5rcy1kZXRhaWwiLCJwYXRjaDpkcmlua3MiLCJwb3N0OmRyaW5rcyJdfQ.a9LCuRcj3Gz0Vns6Wi17nbMAYwMrNKcNOnjTJwE5ePAZV2QXxM4ufqxatNXvUzjqq7auKlpbpAc89r6NmueRBk-mozI0hm_WoQSCmJsCrV2IDi5fJEfZ7W66PZx-1Wn28Dbe8yXpv_vxeTsGgtNVz_TCeKEkEMDqIaJeMkHODQCil79HEnLxhl2ZmoMzBqq2NxO3ADAbZJB4QgL657xXAX9TmywEIULP3W5dufxXlk1cNktUERfBy-wf5Qj9LhGupuVsQxJ4qBLvkN72vCJYidzubez_caiQWbwjOS2ti4OfGajHnske3OYcMwUCApHp_sr8_cdy96d8zGj-k9kNkg"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "jwts urls",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://herfy.us.auth0.com/.well-known/jwks.json",
+					"protocol": "https",
+					"host": [
+						"herfy",
+						"us",
+						"auth0",
+						"com"
+					],
+					"path": [
+						".well-known",
+						"jwks.json"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "jwts urls",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://herfy.us.auth0.com/.well-known/jwks.json",
+							"protocol": "https",
+							"host": [
+								"herfy",
+								"us",
+								"auth0",
+								"com"
+							],
+							"path": [
+								".well-known",
+								"jwks.json"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 08 Feb 2022 19:37:13 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "6da74fae796d41e4-MRS"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "public, max-age=15, stale-while-revalidate=15, stale-if-error=86400"
+						},
+						{
+							"key": "Last-Modified",
+							"value": "Tue, 08 Feb 2022 19:36:44 GMT"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding, Origin, Accept-Encoding"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "EXPIRED"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "false"
+						},
+						{
+							"key": "Access-Control-Expose-Headers",
+							"value": "X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+						},
+						{
+							"key": "ot-baggage-auth0-request-id",
+							"value": "6da74fae796d41e4"
+						},
+						{
+							"key": "ot-tracer-sampled",
+							"value": "true"
+						},
+						{
+							"key": "ot-tracer-spanid",
+							"value": "6b4c909309e9502e"
+						},
+						{
+							"key": "ot-tracer-traceid",
+							"value": "5482c7fd75caff8a"
+						},
+						{
+							"key": "X-Auth0-RequestId",
+							"value": "64517a7ec735293d307d"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "20"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "19"
+						},
+						{
+							"key": "X-RateLimit-Reset",
+							"value": "1644349034"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"keys\": [\n        {\n            \"alg\": \"RS256\",\n            \"kty\": \"RSA\",\n            \"use\": \"sig\",\n            \"n\": \"vBOSAIUeOvw3T1ZDUjMGF5D3pKVaYy7JAppdv2UrWqSHEQJKzssjSlaCJHfTgqxgRKyDS5p3WDNBOx34bNUF4IzmnCmU-1RE5QC7xyFUyyUEs43IEbF_chBeaHsQKjKE6vKGQh6_WpP-GgsMzw4w9nE8ps6LurS9UWthnIb6QZc2LMACPx2-4FQ5MMOPJCY5GdNd4JFAJMiUN-WV2GZvA4ohhX6ilq6DpoD3vPNBPE7cjg04C0_pajCKJHlJ4BSwJCYiJpm_u-U1UgvGHhrUXJcrGosKlNjQxU9TU5O8i7O0oFOkMhVvzuXaPMHVXUWGZMrrnM1pfhwjUSO1neuLCQ\",\n            \"e\": \"AQAB\",\n            \"kid\": \"SzE7pSFTHBLLCHkkpBWXp\",\n            \"x5t\": \"7RI-AWCi4122UxCJG6kDRiTFAMY\",\n            \"x5c\": [\n                \"MIIC/zCCAeegAwIBAgIJXPjfgShFGoZ4MA0GCSqGSIb3DQEBCwUAMB0xGzAZBgNVBAMTEmhlcmZ5LnVzLmF1dGgwLmNvbTAeFw0yMjAxMjQxNjAyMjBaFw0zNTEwMDMxNjAyMjBaMB0xGzAZBgNVBAMTEmhlcmZ5LnVzLmF1dGgwLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALwTkgCFHjr8N09WQ1IzBheQ96SlWmMuyQKaXb9lK1qkhxECSs7LI0pWgiR304KsYESsg0uad1gzQTsd+GzVBeCM5pwplPtUROUAu8chVMslBLONyBGxf3IQXmh7ECoyhOryhkIev1qT/hoLDM8OMPZxPKbOi7q0vVFrYZyG+kGXNizAAj8dvuBUOTDDjyQmORnTXeCRQCTIlDflldhmbwOKIYV+opaug6aA97zzQTxO3I4NOAtP6WowiiR5SeAUsCQmIiaZv7vlNVILxh4a1FyXKxqLCpTY0MVPU1OTvIuztKBTpDIVb87l2jzB1V1FhmTK65zNaX4cI1EjtZ3riwkCAwEAAaNCMEAwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUAq2gNOYHMY16g9SpTign4EWht1UwDgYDVR0PAQH/BAQDAgKEMA0GCSqGSIb3DQEBCwUAA4IBAQBrp5nPM6t8BbVFikpPI4j72haBheXslgRnnS8gSOyQjNuorFg6kJPTDDjXCdfqA+DPa+EWUqbW4N1EoewLj67JpWSNCVc5PHXawPX+shvqn4XmWo+Y0sZdYPr4Y5tpRfjZathbmDYqjviso04DvYroziyZpV8Yf+RkIDKfZNpzP+jnsHrcBo79vkK6u3RVDo83grmv+jDXxZC3flsRx35+/iFecpU1BzZHsMXF05CDJMK1jxuP85i4G3Gz1wAk/2+EVhzZjJLMEjL4bm6PwO6vgPHisZY0dSPJgcbmTd0PBgk14B32jkYQn8DSEgRbbLiUOUjnP2kKV+17BCwLmYDx\"\n            ]\n        },\n        {\n            \"alg\": \"RS256\",\n            \"kty\": \"RSA\",\n            \"use\": \"sig\",\n            \"n\": \"xiAXe2M_dR2hhPIXcCfwVOgUISgFqgnTOWyUvfU-PdDf_zALmowesSM-jfn1pYRRN2hj_8vA3l6Os6CCBwLM09xD_1iv25zQgqHw5bN9oOVxIhbmTaz82JZ2eIBNve48H7xmSh72wy2o4hHwK9mfS0vyFizBSsAHXN28Am55Lg6moe1E-_7J5NPzMRxbTOJTKg8JFI9qvW5AyYwOwB_Vogh_BmfvWSiUnW8qJAamaZ5hjHI6ABDmgMJpaNksh-O9uegY-IzIJaCHPsHOZUp3MP4BjoqEYH7nvNPewvWpONwgvgMuVWV_FaKCTHJ5mE0Lm3XHbwS6M8tz7t6ds9R3wQ\",\n            \"e\": \"AQAB\",\n            \"kid\": \"gKaXAzy3faMz4QzE9GRYW\",\n            \"x5t\": \"jAR2OXsRnPGchx7STV_YRFxtQuw\",\n            \"x5c\": [\n                \"MIIC/zCCAeegAwIBAgIJGjpChL78EhMFMA0GCSqGSIb3DQEBCwUAMB0xGzAZBgNVBAMTEmhlcmZ5LnVzLmF1dGgwLmNvbTAeFw0yMjAxMjQxNjAyMjBaFw0zNTEwMDMxNjAyMjBaMB0xGzAZBgNVBAMTEmhlcmZ5LnVzLmF1dGgwLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMYgF3tjP3UdoYTyF3An8FToFCEoBaoJ0zlslL31Pj3Q3/8wC5qMHrEjPo359aWEUTdoY//LwN5ejrOgggcCzNPcQ/9Yr9uc0IKh8OWzfaDlcSIW5k2s/NiWdniATb3uPB+8Zkoe9sMtqOIR8CvZn0tL8hYswUrAB1zdvAJueS4OpqHtRPv+yeTT8zEcW0ziUyoPCRSPar1uQMmMDsAf1aIIfwZn71kolJ1vKiQGpmmeYYxyOgAQ5oDCaWjZLIfjvbnoGPiMyCWghz7BzmVKdzD+AY6KhGB+57zT3sL1qTjcIL4DLlVlfxWigkxyeZhNC5t1x28EujPLc+7enbPUd8ECAwEAAaNCMEAwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQU2C3svwrnh015QSwIV35lrzzxAncwDgYDVR0PAQH/BAQDAgKEMA0GCSqGSIb3DQEBCwUAA4IBAQBrCD3hBAUTe2dMBo7ASlwyNdQDftfAbKE1bvkyRpVRU8coDEOmKI2ubBOFwb1L1nIFfZQUqGVwpYU7W4wxOi1O1bR8KehKx0sSMBg7At1+KmAaab3bx4So6Itwsh8x6bOaQGhoPiHkRpwedJ8TNN2a1tT8VmB4Ct4ng/EnJxLatSqn7HLsnKcNZ25yTos79onTGljPMS6Z57MoAzBizF2PjWbUpJtm0aKJcOU1qOOigMOM0icyjH4sEj5VAP/3TQaSLYKAjKr23LSnpK/UIE0KaxSp/IARkJd4FveazD4vEJtlFw4J7DXBmsw0wp5eaAIz5suzVUpBy5BKoKFa0ZOr\"\n            ]\n        }\n    ]\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "admin_token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlN6RTdwU0ZUSEJMTENIa2twQldYcCJ9.eyJpc3MiOiJodHRwczovL2hlcmZ5LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDEwMDYwNjE3NjQ5OTk2MzM2MTE2NSIsImF1ZCI6IkdyZWV0aW5nQXBpIiwiaWF0IjoxNjQ3NDI5NDE3LCJleHAiOjE2NDc1MTU4MTcsImF6cCI6InpQRk8zN1RzOEF3TEJoVnQ5cVpQdHVxeXZmWWo0OVQ3Iiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6Z3JlZXRpbmdzIiwiZ2V0OmdyZWV0aW5ncy1kZXRhaWwiLCJwb3N0OmdyZWV0aW5ncyJdfQ.ZvQ3oivFTl7EVJrmO5NWzyzWNTPtgyltRhtP4uXDHwlV9AR558rbkXWKjnAaXFz3jljRbBWySsCyChI8bFqOp5OvRYBH03EvvURUZHPWEeH12whdV7Whf4gbkJRyv4doe3x8URJkV7aYU0pOGZAkRauHqlIUYj3UK6y0uHu0QuVdSAgAlyJp8WkCvuQ4MIDk7ZEGVzHkGRUExV7_JZv5ZAlkf1MkPtAHqfoRuAjRLDkQM2cQTDiwiWZxemPMDYX6iE-7IglEE5cMWRL3E35tGBZicgGZZ7bGKfE8di6CET7MbNzCDmJ2a-BLywPu1hXV9iTQpxcWP2-kgY7f9kA1gQ",
+			"type": "string"
+		},
+		{
+			"key": "greeter_token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlN6RTdwU0ZUSEJMTENIa2twQldYcCJ9.eyJpc3MiOiJodHRwczovL2hlcmZ5LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDEwMDYwNjE3NjQ5OTk2MzM2MTE2NSIsImF1ZCI6IkdyZWV0aW5nQXBpIiwiaWF0IjoxNjQ3NDM5MzQ5LCJleHAiOjE2NDc1MjU3NDksImF6cCI6InpQRk8zN1RzOEF3TEJoVnQ5cVpQdHVxeXZmWWo0OVQ3Iiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6Z3JlZXRpbmdzIl19.X6jOMKOYhsxBF2DzmU3kn7Mz639g72epHbBmatGbdSRehMwNDQrypZXgOW0M4MmXVclYGFSC1s4QLcn4hnl81zksj_AfTjzDrAQdGpR4ZPKuKY4VXVHGCzYYj11saA7Jow3pmDhKomSZ-XsCgrX2nyoP7gAJnphZlbwnEsRD1mhWZlOoaHVnwE8RGE-wNb9HxXHZkGAbCv6-0w13VAk_k8Xd702KJSiLQFyy_g8Xig37DO_uc78zd6j3wnAJH12nhYsP41nS9xTgvOn1jasfCfn1kDHEEx2AtvsFaJbF4qFo9F4D5pmfXD_EAQxU5sBhSFNo3sISCKlmUgvef_8jbQ",
+			"type": "string"
+		}
+	]
+}

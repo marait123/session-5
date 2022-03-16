@@ -53,3 +53,19 @@ sudo apt-get -y install postgresql
 # Notes
 
 - to view a file in terminal while showing end of line characters `cat -v setup.sh`
+
+# documentation
+
+# Greeting-backend
+
+this is the repository for the example Greeting project
+
+included in the repo the tokens for the different 2 users you will find them in the test_app.py
+
+included also the a postman collection where you can use to interact with the app hosted on heroku
+
+to access the login page you head to this [login](https://herfy.us.auth0.com/authorize?audience=casting-api&response_type=token&client_id=IxV8rY0a41tknH4FDyodNI0wWxpFOoN6&redirect_uri=http://127.0.0.1:5000) page
+
+## authentication
+
+all tokens are fresh you can use them to interact with api
