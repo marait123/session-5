@@ -69,3 +69,38 @@ to access the login page you head to this [login](https://herfy.us.auth0.com/aut
 ## authentication
 
 all tokens are fresh you can use them to interact with api
+
+## endpoints
+
+GET "/greetings"
+
+- Fetches an json that contains an array of greetings
+- Request Arguments: None
+- Query Arguments:
+  -page = the page number
+  -limit = number of items per page
+- Request Body: None
+- Returns:
+  - an array of greetings as show in the example response
+  - status: 200
+- Example Response:
+
+```json
+
+{
+    "limit": 10,
+    "greetings": [
+        {
+
+            "greeting": "bonjour",
+            "lang": "french"
+
+        }
+        ...
+    ],
+    "next": null,
+    "page": 1,
+    "prev": null,
+    "total": 6
+}
+```
