@@ -29,19 +29,31 @@ Have title and release year
 '''
 
 
-class Person(db.Model):
-    __tablename__ = 'People'
+'''
+Greeting
+'''
+
+
+class Greeting(db.Model):
+    __tablename__ = 'greetings'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String)
-    catchphrase = Column(String)
+    lang = Column(String)
+    greeting = Column(String)
 
-    def __init__(self, name, catchphrase=""):
-        self.name = name
-        self.catchphrase = catchphrase
-
+    def __init__(self, lang, greeting):
+        self.lang = lang
+        self.greeting = greeting
+    def update(self):
+        db.session.commit()
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
     def format(self):
         return {
-            'id': self.id,
-            'name': self.name,
-            'catchphrase': self.catchphrase}
+            'lang': self.lang,
+            'greeting': self.greeting,
+        }

@@ -27,6 +27,13 @@ sudo apt-get -y install postgresql
 - run the following command `./setup.sh`
 - run `flask run --reload`
 
+# setup database
+
+# testing
+
+- `source ./setup.sh`
+- `python3 ./test_app.py`
+
 # Heroku
 
 - Assuming you have already committed all your local edits.
