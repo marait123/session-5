@@ -12,7 +12,7 @@ sudo apt-get -y install postgresql
 - if you have postgres on windows stop the service
   ![stop-postgres](images/stop-windows-psql.png)
 - in wsl run the following command `sudo service postgresql restart`
-
+- **important** after installing run the following command `ALTER USER postgres PASSWORD '123456';` to set the password for postgres user to 123456 as in setup.sh
 # create a virtual env
 
 - run `pythom3 -m ven env`
